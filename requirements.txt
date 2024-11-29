@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+psycopg2
+python-dotenv
+pillow
+sqlalchemy
+psycopg2-binary
+jinja2
