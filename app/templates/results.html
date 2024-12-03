@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gleecus TechLabs - Sudoku Solver - Results</title>
+    <title>Gleecus TechLabs - Sudoku Solver</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,84 +11,183 @@
             padding: 0;
             background-color: #ffffff;
         }
-        header {
-            text-align: center;
-            margin-top: 40px;
+        .header {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px;
+            align-items: center;
+            background: none; /* Removed any background color */
+            border-bottom: none; /* Removed the border */
         }
-        header h1 {
-            font-size: 24px;
-            font-weight: 500;
+        .header a {
+            text-decoration: none;
+            padding: 8px 16px;
+            cursor: pointer;
             color: #202124;
         }
+        .header a:hover {
+            text-decoration: underline;
+        }
+        .logo {
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration-line: none;
+        }
+        .login-register {
+            display: flex;
+            gap: 15px;
+        }
+
+        header {
+            text-align: center; /* Centers all content inside the header */
+            margin-top: 40px; /* Adjusted margin for better spacing */
+        }
+        
+        header h1 {
+            font-size: 24px; /* Slightly larger font for prominence */
+            font-weight: 500; /* Softer weight for a modern look */
+            color: #202124; /* Google's dark text color */
+            margin-bottom: 10px; /* Adds space below the heading */
+            font-family: Arial, sans-serif; /* Clean and simple font */
+        }
+        
         header p {
-            font-size: 16px;
-            color: #5f6368;
-            margin-top: 0;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            font-size: 16px; /* Slightly larger for readability */
+            color: #5f6368; /* Subtle gray for secondary text */
+            margin-top: 0; /* Removes default top margin */
+            margin-bottom: 20px; /* Adds consistent spacing from other elements */
+            line-height: 1.5; /* Improves readability with balanced spacing */
+            font-family: Arial, sans-serif; /* Matches the heading font */
         }
-        .sudoku-grid {
-            display: grid;
-            grid-template-columns: repeat(9, 30px);
-            grid-template-rows: repeat(9, 30px);
-            gap: 2px;
+
+       
+        .image-container {
+            display: flex;
             justify-content: center;
-            margin: 20px 0;
+            gap: 40px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+            font-weight: normal;
+            font-size: 15px;
+            justify-content: center;
         }
-        .sudoku-grid input {
-            width: 30px;
-            height: 30px;
-            text-align: center;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .sudoku-grid input:disabled {
-            background-color: #f5f5f5;
-        }
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
+        .image-container img {
+            width: 100%;
+            max-width: 300px;  /* Limit image width */
+            height: 210px;
+            font-weight: normal;
+            object-fit: contain;
+            margin: 10px;
         }
         .home-button {
-            padding: 10px 20px;
-            background-color: #f8f9fa;
-            border: 1px solid #dfe1e5;
-            border-radius: 6px;
-            font-size: 14px;
-            color: #3c4043;
-            cursor: pointer;
+            padding: 10px 20px; /* Adds comfortable padding for the button */
+            background-color: #f8f9fa; /* Google's soft gray background */
+            border: 1px solid #dfe1e5; /* Light gray border */
+            border-radius: 6px; /* Slightly rounded corners */
+            font-size: 14px; /* Standard font size */
+            color: #3c4043; /* Neutral text color */
+            cursor: pointer; /* Pointer cursor for interactivity */
+            margin: 0 4px; /* Adds space between multiple buttons */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for slight elevation */
+            transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition effects */
+            display: inline-block;
             margin-top: 10px;
         }
+
         .home-button:hover {
             border-color: #aaa;
-            background-color: #e8f0fe;
+            background-color: #e8f0fe; /* Light blue background on hover */
+            box-shadow: 0 1px 3px rgba(60, 64, 67, 0.15); /* Slightly darker shadow on hover */
         }
         .home-button:active {
-            background-color: #dadce0;
+            background-color: #dadce0; /* Dim background on click */
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2); /* Inset shadow for pressed effect */
         }
+
+        
+
+        .footer-lower {
+            background-color: #f2f2f2; /* Exact Google footer background color */
+            border-top: 1px solid #e0e0e0; /* Slight border for subtle separation */
+
+            padding: 15px 20px; /* Spacing inside the footer */
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            color: #5f6368; /* Google's text color for light backgrounds */
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between; /* Distribute content between left and right */
+            align-items: center;
+        }
+        
+        .footer-lower .copyright {
+            margin-left: 12px; /* Padding from the left edge */
+            color: #202124;
+        }
+        
+        .footer-lower .footer-links {
+            display: flex; /* Arrange links in a row */
+            gap: 15px; /* Space between links */
+            margin-right: 40px;
+        }
+        
+       
+        
+        .footer-lower .footer-links a {
+            text-decoration: none;
+            color: #202124; /* Link color */
+        }
+        
+        .footer-lower .footer-links a:hover {
+            text-decoration: underline; /* Hover effect */
+        }
+
+        
+        
+    
     </style>
 </head>
 <body>
 
+    <div class="header">
+        <a class="logo" href="/">Gleecus TechLabs</a>
+        <div class="logo">
+            <a href="#login">Login/Register</a>
+        </div>
+    </div>
+
     <header>
         <h1>Sudoku Solver - Results</h1>
-        <p>Your Sudoku puzzle has been solved!</p>
+        <p>Your puzzle has been solved!</p>
     </header>
 
-    <div class="sudoku-grid">
-        <!-- Display the solved Sudoku here -->
-        <!-- Example for pre-filled grid; update these based on server response -->
-        <input type="text" value="5" disabled>
-        <input type="text" value="3" disabled>
-        <input type="text" value="4" disabled>
-        <input type="text" value="6" disabled>
-        <!-- Continue with all the 81 cells here -->
+    <div class="image-container">
+        <div id="uploaded-image-container">
+            <h3>Input Image:</h3>
+            <img id="uploaded-image" src="/static/input.png" alt="Uploaded Image">
+        </div>
+        <div id="processed-image-container">
+            <h3>Output Image:</h3>
+            <img id="processed-image" src="/static/output.png" alt="Processed Image">
+        </div>
     </div>
 
-    <div class="button-container">
-        <button class="home-button" onclick="window.location.href='/';">Back to Home</button>
+    <div style="text-align: center;">
+        <button class="home-button" onclick="window.location.href='/'">Return to Home</button>
     </div>
+    
+
+    <footer class="footer-lower">
+        <div class="copyright">
+            &copy; Gleecus TechLabs
+        </div>
+        <div class="footer-links">
+            <a href="#privacy">Privacy</a>
+            <a href="#terms">Terms</a>
+            <a href="#settings">Settings</a>
+        </div>
+    </footer>
 
 </body>
 </html>
