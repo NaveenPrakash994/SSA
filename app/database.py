@@ -2,13 +2,19 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-DATABASE_URL = "postgresql://postgres:Aren@localhost:5432/mydatabase"
+# Use the correct database URL
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:Aren@localhost:5432/sudoku_solver"
 
-engine = create_engine(DATABASE_URL)
+# Database engine
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
+
+# Create a SessionLocal class
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# Base class to define models
 Base = declarative_base()
 
-# Dependency for database sessions
+# Dependency to get the database session
 def get_db():
     db = SessionLocal()
     try:

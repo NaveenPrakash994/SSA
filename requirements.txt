@@ -6,3 +6,6 @@ pillow
 sqlalchemy
 psycopg2-binary
 jinja2
+python-multipart
+pytesseract
+opencv-python

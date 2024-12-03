@@ -1,13 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Results</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gleecus TechLabs - Sudoku Solver - Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+        header {
+            text-align: center;
+            margin-top: 40px;
+        }
+        header h1 {
+            font-size: 24px;
+            font-weight: 500;
+            color: #202124;
+        }
+        header p {
+            font-size: 16px;
+            color: #5f6368;
+            margin-top: 0;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .sudoku-grid {
+            display: grid;
+            grid-template-columns: repeat(9, 30px);
+            grid-template-rows: repeat(9, 30px);
+            gap: 2px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .sudoku-grid input {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .sudoku-grid input:disabled {
+            background-color: #f5f5f5;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .home-button {
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #dfe1e5;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #3c4043;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .home-button:hover {
+            border-color: #aaa;
+            background-color: #e8f0fe;
+        }
+        .home-button:active {
+            background-color: #dadce0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Results</h1>
-    <div style="display: flex;">
-        <img src="{{ image1 }}" alt="Image 1" style="width: 50%;">
-        <img src="{{ image2 }}" alt="Image 2" style="width: 50%;">
+
+    <header>
+        <h1>Sudoku Solver - Results</h1>
+        <p>Your Sudoku puzzle has been solved!</p>
+    </header>
+
+    <div class="sudoku-grid">
+        <!-- Display the solved Sudoku here -->
+        <!-- Example for pre-filled grid; update these based on server response -->
+        <input type="text" value="5" disabled>
+        <input type="text" value="3" disabled>
+        <input type="text" value="4" disabled>
+        <input type="text" value="6" disabled>
+        <!-- Continue with all the 81 cells here -->
     </div>
+
+    <div class="button-container">
+        <button class="home-button" onclick="window.location.href='/';">Back to Home</button>
+    </div>
+
 </body>
 </html>

@@ -1,10 +1,11 @@
-from sqlalchemy import Column, Integer, String, DateTime
-from sqlalchemy.sql import func
+
+from sqlalchemy import Column, Integer, String
 from .database import Base
 
-class File(Base):
-    __tablename__ = "files"
-
+class Upload(Base):
+    __tablename__ = "sudoku_solver"
+    
     id = Column(Integer, primary_key=True, index=True)
     filename = Column(String, index=True)
-    uploaded_at = Column(DateTime, default=func.now())
+    solved_image_path = Column(String)
+
