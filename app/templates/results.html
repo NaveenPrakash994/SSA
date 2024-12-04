@@ -132,8 +132,6 @@
             margin-right: 40px;
         }
         
-       
-        
         .footer-lower .footer-links a {
             text-decoration: none;
             color: #202124; /* Link color */
@@ -142,10 +140,6 @@
         .footer-lower .footer-links a:hover {
             text-decoration: underline; /* Hover effect */
         }
-
-        
-        
-    
     </style>
 </head>
 <body>
@@ -165,18 +159,17 @@
     <div class="image-container">
         <div id="uploaded-image-container">
             <h3>Input Image:</h3>
-            <img id="uploaded-image" src="/static/input.png" alt="Uploaded Image">
+            <img id="uploaded-image" src="{{ original_image }}" alt="Uploaded Image">
         </div>
         <div id="processed-image-container">
             <h3>Output Image:</h3>
-            <img id="processed-image" src="/static/output.png" alt="Processed Image">
+            <img id="processed-image" src="{{ solved_image }}" alt="Processed Image">
         </div>
     </div>
 
     <div style="text-align: center;">
         <button class="home-button" onclick="window.location.href='/'">Return to Home</button>
     </div>
-    
 
     <footer class="footer-lower">
         <div class="copyright">
