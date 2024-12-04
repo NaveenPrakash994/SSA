@@ -248,15 +248,17 @@
         <h1>Sudoku Solver</h1>
         <p>Upload your Sudoku puzzle, AI solves it for you</p>
     </header>
-    <form action="/upload/" method="post" enctype="multipart/form-data">
+    
+    <form action="/upload/" method="post" enctype="multipart/form-data" onsubmit="processImage(event)" >
     <div class="search-container">
         <div class="file-input-container">
-            <input type="file" id="image-upload" class="file-input" accept="image/*">
+            <input type="file" id="image-upload" name="file" class="file-input" accept="image/*">
             <label for="image-upload" class="file-input-label">Choose a file</label>
         </div>
         <button class="upload-button" onclick="processImage()">Upload Image</button>
         <div id="loading"></div>
     </div>
+    </form>
 
     <footer class="footer-upper">
         <div class="country-name">India</div>
@@ -274,25 +276,45 @@
     </footer>
 
     <script>
-        function processImage() {
+        function processImage(event) {
+            event.preventDefault(); // Prevent default form submission
+            const fileInput = document.getElementById("image-upload");
+            
+            if (!fileInput.files.length) {
+              alert("Please select an image first");
+              return;
+            }
+          
             document.getElementById("loading").style.display = "block";
-            setTimeout(function () {
-                const formData = new FormData();
-                formData.append("file", document.getElementById("image-upload").files[0]);
-
-                fetch("/submit", {
-                    method: "POST",
-                    body: formData
-                })
-                .then(response => response.text())
-                .then(html => {
-                    document.open();
-                    document.write(html);
-                    document.close();
-                    document.getElementById("loading").style.display = "none";
-                });
-            }, 3000);
-        }
+            
+            const formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+          
+            fetch("/upload/", {
+              method: "POST",
+              body: formData
+            })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Upload failed');
+              }
+              return response.text();
+            })
+            .then(html => {
+              document.open();
+              document.write(html);
+              document.close();
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('Upload failed');
+            })
+            .finally(() => {
+              document.getElementById("loading").style.display = "none";
+            });
+          }
+        
     </script>
 </body>
 </html>
+
